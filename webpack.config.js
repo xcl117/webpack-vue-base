@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -61,9 +62,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({ template: "index.html" }),
+  ],
 };
-
 
 if (process.env.NODE_ENV === "production") {
   module.exports.devtool = "#source-map";
@@ -75,7 +78,7 @@ if (process.env.NODE_ENV === "production") {
     }),
     // new webpack.optimize.UglifyJsPlugin(),
   ]);
-  const TerserPlugin = require('terser-webpack-plugin');
+  const TerserPlugin = require("terser-webpack-plugin");
   let optimization = {
     minimizer: [
       new TerserPlugin({
