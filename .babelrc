@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        // "targets": {
+        //   "edge": "17",
+        //   "firefox": "60",
+        //   "safari": "11.1",
+        ////   "chrome": "67"指编译的代码要运行在67版本的chrom浏览器上，如果67版本chrom支持promis等新语法，则不转换，否则进行转换。
+        //   "chrome": "67"
+        // },
+        // 当polyfill去往低版本浏览器添加一些特性的时候，不是把所有的特性都加进了，而是根据你的业务代码来决定添加什么。
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
+}
